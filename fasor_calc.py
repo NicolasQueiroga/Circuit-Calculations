@@ -1,7 +1,6 @@
 '''
 @author: NicolasQueiroga
 '''
-# python /Users/nicolasqueiroga/Desktop/Codes/Python/py/fasor_calc.py
 
 import numpy as np
 from math import *
