@@ -106,7 +106,10 @@ if ans1 == 'y':
     print('Sua representação polar é:')
     print('Zeq = {} ohms'.format(polar(eq)))
 elif ans1 == 'n':
+    
+    # Altere aqui a equação que calcula a impedância equivalente
     eq['Zeq'] = ((phasors['R2'] + phasors['L2'])*(phasors['C1'] + phasors['L1']))/((phasors['R2'] + phasors['L2'])+(phasors['C1'] + phasors['L1'])) + phasors['R1']
+    
     print('\nA impedância equivalente é:')
     print('Zeq = {:.3f} ohms\n'.format(eq['Zeq']))
     print('Sua representação polar é:')
