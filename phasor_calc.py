@@ -51,15 +51,22 @@ def pot(Zeq, rho, theta):
 #-------------------------------------------------------------------------------
 
 phasors = {}
-ans = input('\nFoi dado velocidade ângular ou frequência(w/f)? ')
+print('\n--------------------------------------------------------')
+ans = input('Foi dado velocidade ângular ou frequência(w/f)? ')
 if ans == 'w':
-    w = float(input('\nQual é a velocidade ângular w(rad/s)? '))
+    w = float(input('Qual é a velocidade ângular w(rad/s)? '))
 elif ans == 'f':
-    f = float(input('\nQual é a freqência f(1/s)? '))
+    f = float(input('Qual é a freqência f(1/s)? '))
     w = 2*pi*f
+print('--------------------------------------------------------\n')
 
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+
+values = {}
 while True:
-    ans = input('\nCapacitor = C\nResistor = R\nIndutor = L\n--> ')
+    print('--------------------------------------------------------')
+    ans = input('Capacitor = C\nResistor = R\nIndutor = L\nend = concluir\n--> ')
     if ans == 'end':
         break
     if 'R' not in ans:
@@ -67,55 +74,77 @@ while True:
         if 'L' in ans:
             C = 0
             L = float(input('\nQual é a indutância? '))
+            values[ans] = L
         elif 'C' in ans:
             L = 0
             C = float(input('\nQual é a capacitância? '))
+            values[ans] = C
     else:
         L = 0
         C = 0
         R = float(input('\nQual é a resistência? '))
+        values[ans] = R
     phasors[ans] = Z(R, L, C, w)
-    print('\nDigite end para concluir')
-print('\nOs fasores são:\n{}'.format(phasors))
-print('\nSuas representações polares são:\n{}\n'.format(polar(phasors)))
+    print('\n',values)
+    print('--------------------------------------------------------')
+print('--------------------------------------------------------')
+print('\n--------------------------------------------------------')
+print('Os fasores são:\n{}'.format(phasors))
+print('\nSuas representações polares são:\n{}'.format(polar(phasors)))
+print('--------------------------------------------------------')
 
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
-ans1 = input('\nOs componentes estão em SERIE(y/n, or skip)? ')
+print('\n--------------------------------------------------------')
+ans1 = input('Os componentes estão em SERIE(y/n, or skip)? ')
 eq = {}
 if ans1 == 'y':
     eq['Zeq'] = Z_serie(phasors)
-    print('\nZeq = {:.3f} ohms\n'.format(eq['Zeq']))
-    print('Zeq = {} ohms\n'.format(polar(eq)))
+    print('\nA impedância equivalente é:')
+    print('Zeq = {:.3f} ohms\n'.format(eq['Zeq']))
+    print('Sua representação polar é:')
+    print('Zeq = {} ohms'.format(polar(eq)))
 elif ans1 == 'n':
-    eq['Zeq'] = phasors['R'] + (phasors['L']*phasors['C'])/(phasors['L']+phasors['C'])
-    print('\nZeq = {:.3f} ohms\n'.format(eq['Zeq']))
-    print('Zeq = {} ohms\n'.format(polar(eq)))
+    eq['Zeq'] = ((phasors['R2'] + phasors['L2'])*(phasors['C1'] + phasors['L1']))/((phasors['R2'] + phasors['L2'])+(phasors['C1'] + phasors['L1'])) + phasors['R1']
+    print('\nA impedância equivalente é:')
+    print('Zeq = {:.3f} ohms\n'.format(eq['Zeq']))
+    print('Sua representação polar é:')
+    print('Zeq = {} ohms'.format(polar(eq)))
+print('--------------------------------------------------------')
 
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 if ans1 != 'skip':
-    ans = input('\nQuer calcular potência (y/n)? ')
+    print('\n--------------------------------------------------------')
+    ans = input('Quer calcular potência (y/n)? ')
     if ans == 'y':
         ans = input('\nO valor da DDP é o eficaz ou de pico-a-pico (ef/pp)? ')
         if ans == 'pp':
-            rho = float(input('\nDigite o valor de Vpp: '))
+            rho = float(input('Digite o valor de Vpp: '))
         elif ans == 'ef':
-            Vef = float(input('\nDigite o valor de Vef: '))
+            Vef = float(input('Digite o valor de Vef: '))
             rho = Vef*sqrt(2)
-        theta = float(input('\nQual é o ângulo de fase? '))
+        theta = float(input('Qual é o ângulo de fase? '))
         potência = pot(eq['Zeq'], rho, theta)
-        
+        print('--------------------------------------------------------\n')
         i = {'I':potência[5]}
-        print('\n\nCorrente = {:.3f} A'.format(potência[5]))
+        print('Corrente nas formas retângular e polar:')
+        print('Corrente = {:.3f} A'.format(potência[5]))
         print('Corrente = {} A'.format(polar(i)))
 
         p = {'S':potência[0]}
-        print('\nPotência Complexa = {:.3f} V.A'.format(potência[0]))
-        print('Potência Complexa = {} V.A'.format(polar(p)))
+        print('\nPotência (S) nas formas retângular e polar:')
+        print('{:.3f} V.A'.format(potência[0]))
+        print('{} V.A'.format(polar(p)))
 
-        print('\nPotência Aparente = {:.3f} V.A'.format(potência[1]))
-        print('\nPotência Ativa = {:.3f} W'.format(potência[2]))
-        print('\nPotência Reativa = {:.3f} V.A'.format(potência[3]))
-        print('\nFator de Potência = {:.3f}\n'.format(potência[4]))
-
+        print('\nOutras análises da potência (S):')
+        print('Potência Aparente = {:.3f} V.A'.format(potência[1]))
+        print('Potência Ativa = {:.3f} W'.format(potência[2]))
+        print('Potência Reativa = {:.3f} V.A'.format(potência[3]))
+        print('Fator de Potência = {:.3f}'.format(potência[4]))
+        print('\n--------------------------------------------------------')
+print('-------------------------end----------------------------\n')
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
