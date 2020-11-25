@@ -26,6 +26,7 @@
 </p>
 
 - Agora o programa pergunta se os componentes estão ou não em serie ou se quer pular este passo, e devolverá a impedância equivalente nas formas retângular e polar: 
+
 *Se existir componentes em paralelo, será necessário alterar a linha 111 do código em uma IDE*
 <p align="center">
 <img src=img/step5.png>
