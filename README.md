@@ -29,8 +29,9 @@
 
 *Se existir componentes em paralelo, será necessário alterar a linha 111 do código em uma IDE, colocando a equação que calcule a impedância equivalente do circuito*
 <p align="center">
-<img src=img/step5.png>
+<img src=img/linha111.png>
 </p>
+<img src=img/step5.png> 
 
 - Se quiser que o programa calcule a corrente e realize análises sobre a potência do circuito, serão necessários o valor da DDP de pico-a-pico ou a DDP eficaz, assim como o ângulo de fase da onda 
 
