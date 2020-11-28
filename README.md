@@ -30,7 +30,7 @@
 *Se existir componentes em paralelo, será necessário alterar a linha 111 do código em uma IDE, colocando a equação que calcule a impedância equivalente do circuito*
 <p align="center">
 <img src=img/linha111.png>
-
+<br>
 <img src=img/step5.png> 
 </p>
 
