@@ -27,7 +27,7 @@
 
 - Agora o programa pergunta se os componentes estão ou não em serie ou se quer pular este passo, e devolverá a impedância equivalente nas formas retângular e polar: 
 
-*Se existir componentes em paralelo, será necessário alterar a linha 111 do código em uma IDE, colocando a equação que calcule a impedância equivalente do circuito*
+*Se existir componentes em paralelo, será necessário alterar a linha 120 do código em uma IDE, colocando a equação que calcule a impedância equivalente do circuito*
 <p align="center">
 <img src=img/linha111.png>
 <br>
