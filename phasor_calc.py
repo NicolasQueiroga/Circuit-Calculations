@@ -13,10 +13,10 @@ def Z(R, L, C, w):
     if L == 0 and C == 0:
         return R + 0*1j
     elif R == 0 and C == 0:
-        ans = round(L*w, 3)
+        ans = round(L*w, 4)
         return 0 + ans*1j
     elif L == 0 and R == 0:
-        ans = round(1/(C*w), 3)
+        ans = round(1/(C*w), 4)
         return 0 - ans*1j
 
 
