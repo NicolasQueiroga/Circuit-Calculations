@@ -48,7 +48,7 @@ def pot(Zeq, rho, theta):
     pot_ap = np.absolute(pot_complx)
     pot_ativa = pot_complx.real
     pot_reativa = pot_complx.imag
-    fator_de_pot = atan2(pot_complx.imag, pot_complx.real)
+    fator_de_pot = pot_ativa/pot_ap
     results = [pot_complx, pot_ap, pot_ativa, pot_reativa, fator_de_pot, I]
     return results
 
